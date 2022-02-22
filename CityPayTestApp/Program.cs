@@ -17,6 +17,8 @@ namespace CityPayTestApp
 
         private static void Main(string[] args)
         {
+            Console.WriteLine();
+
             Log("## Start");
 
             try
@@ -94,24 +96,33 @@ namespace CityPayTestApp
             catch (ApiException ex)
             {
                 Log($"ApiException: {ex.Message}");
+                Log(ex.StackTrace);
             }
             catch (Exception ex)
             {
                 Log($"Exception: {ex.Message}");
+                Log(ex.StackTrace);
             }
 
             Log("## End");
 
+            Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
         }
 
         private static BatchProcessingApi GetBatchProcessingApi()
         {
+            Log(">> Creating Configuration");
             var configuration = new Configuration { BasePath = "https://api.citypay.com/v6" };
 
+            Log(">> Generating Key");
             configuration.AddApiKey("cp-api-key", new ApiKey(_clientID, _licenceKey).GenerateKey());
 
-            return new BatchProcessingApi(configuration);
+            Log(">> Creating Api");
+            var api = new BatchProcessingApi(configuration);
+
+            Log(">> Calling Api Method");
+            return api;
         }
 
         private static void Log(string message)
