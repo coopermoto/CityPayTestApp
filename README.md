@@ -1,8 +1,12 @@
 # CityPayTestApp
-## Arguments: `<ClientId> <LicenceKey> <BatchId>`
+## Arguments:
+- `ClientId` The Client ID
+- `LicenceKey` The Licence Key
+- `BatchId` The Batch ID
+
 e.g. `CityPayTestApp AB123456 ABCDEFGHIJKLMNOP 9999`
 
-Sample output from my dev machine:
+### Sample output from my dev machine:
 ```
 20:44:48: ## Start
 20:44:48: Created BatchTransaction object 4_CP-MS-R
@@ -42,7 +46,7 @@ Sample output from my dev machine:
 20:59:50: ## End
 ```
 
-Sample output from our server:
+### Sample output from our server:
 ```
 21:06:44: ## Start
 21:06:44: Created BatchTransaction object 5_CP-MS-R
